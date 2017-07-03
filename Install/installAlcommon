@@ -10,6 +10,106 @@ defaultArchive="naoqi-sdk-2.1.4.13-linux32.tar.gz"
 
 source "${includeDir}/bhumanBase"
 
+includesOpenCV="
+include/opencv2/core/core.hpp \
+include/opencv2/core/core_c.h \
+include/opencv2/core/cuda_devptrs.hpp \
+include/opencv2/core/devmem2d.hpp \
+include/opencv2/core/eigen.hpp \
+include/opencv2/core/gpumat.hpp \
+include/opencv2/core/internal.hpp \
+include/opencv2/core/mat.hpp \
+include/opencv2/core/opengl_interop.hpp \
+include/opencv2/core/operations.hpp \
+include/opencv2/core/types_c.h \
+include/opencv2/core/version.hpp \
+include/opencv2/core/wimage.hpp \
+include/opencv2/highgui/cap_ios.h \
+include/opencv2/highgui/highgui.hpp \
+include/opencv2/highgui/highgui_c.h \
+include/opencv2/imgproc/imgproc.hpp \
+include/opencv2/imgproc/imgproc_c.h \
+include/opencv2/imgproc/types_c.h \
+include/opencv2/ml/ml.hpp \
+include/opencv2/objdetect/objdetect.hpp \
+include/opencv2/contrib/contrib.hpp \
+include/opencv2/contrib/retina.hpp \
+include/opencv2/video/background_segm.hpp \
+include/opencv2/video/tracking.hpp \
+include/opencv2/video/video.hpp \
+include/opencv2/features2d/features2d.hpp \
+include/opencv2/calib3d/calib3d.hpp \
+include/opencv2/flann/all_indices.h \
+include/opencv2/flann/general.h \
+include/opencv2/flann/lsh_table.h \
+include/opencv2/flann/allocator.h \
+include/opencv2/flann/ground_truth.h \
+include/opencv2/flann/matrix.h \
+include/opencv2/flann/any.h \
+include/opencv2/flann/hdf5.h \
+include/opencv2/flann/miniflann.hpp \
+include/opencv2/flann/autotuned_index.h \
+include/opencv2/flann/heap.h \
+include/opencv2/flann/nn_index.h \
+include/opencv2/flann/composite_index.h \
+include/opencv2/flann/hierarchical_clustering_index.h \
+include/opencv2/flann/object_factory.h \
+include/opencv2/flann/config.h \
+include/opencv2/flann/index_testing.h \
+include/opencv2/flann/params.h \
+include/opencv2/flann/defines.h \
+include/opencv2/flann/kdtree_index.h \
+include/opencv2/flann/random.h \
+include/opencv2/flann/dist.h \
+include/opencv2/flann/kdtree_single_index.h \
+include/opencv2/flann/result_set.h \
+include/opencv2/flann/dummy.h \
+include/opencv2/flann/kmeans_index.h \
+include/opencv2/flann/sampling.h \
+include/opencv2/flann/dynamic_bitset.h \
+include/opencv2/flann/linear_index.h \
+include/opencv2/flann/saving.h \
+include/opencv2/flann/flann_base.hpp \
+include/opencv2/flann/logger.h \
+include/opencv2/flann/simplex_downhill.h \
+include/opencv2/flann/flann.hpp \
+include/opencv2/flann/lsh_index.h \
+include/opencv2/flann/timer.h \
+"
+
+libsOpencv="
+lib/libopencv_core.so \
+lib/libopencv_core.so.2.4 \
+lib/libopencv_core.so.2.4.3 \
+lib/libopencv_highgui.so \
+lib/libopencv_highgui.so.2.4 \
+lib/libopencv_highgui.so.2.4.3 \
+lib/libopencv_imgproc.so \
+lib/libopencv_imgproc.so.2.4 \
+lib/libopencv_imgproc.so.2.4.3 \
+lib/libopencv_ml.so \
+lib/libopencv_ml.so.2.4 \
+lib/libopencv_ml.so.2.4.3 \
+lib/libopencv_objdetect.so \
+lib/libopencv_objdetect.so.2.4 \
+lib/libopencv_objdetect.so.2.4.3 \
+lib/libopencv_contrib.so \
+lib/libopencv_contrib.so.2.4 \
+lib/libopencv_contrib.so.2.4.3 \
+lib/libopencv_video.so \
+lib/libopencv_video.so.2.4 \
+lib/libopencv_video.so.2.4.3 \
+lib/libopencv_features2d.so \
+lib/libopencv_features2d.so.2.4 \
+lib/libopencv_features2d.so.2.4.3 \
+lib/libopencv_calib3d.so \
+lib/libopencv_calib3d.so.2.4 \
+lib/libopencv_calib3d.so.2.4.3 \
+lib/libopencv_flann.so \
+lib/libopencv_flann.so.2.4 \
+lib/libopencv_flann.so.2.4.3 \
+"
+
 includesAlcommon="
 include/alcommon/albroker.h \
 include/alcommon/alfunctor.h \
@@ -103,7 +203,6 @@ include/qitype/typeobject.hpp \
 includesBoost="
 include/boost/aligned_storage.hpp \
 include/boost/any.hpp \
-include/boost/array.hpp \
 include/boost/assert.hpp \
 include/boost/bind.hpp \
 include/boost/bind/arg.hpp \
@@ -140,13 +239,11 @@ include/boost/config/no_tr1/functional.hpp \
 include/boost/config/no_tr1/memory.hpp \
 include/boost/config/no_tr1/utility.hpp \
 include/boost/config/platform/linux.hpp \
-include/boost/config/platform/macos.hpp \
 include/boost/config/posix_features.hpp \
 include/boost/config/requires_threads.hpp \
 include/boost/config/select_compiler_config.hpp \
 include/boost/config/select_platform_config.hpp \
 include/boost/config/select_stdlib_config.hpp \
-include/boost/config/stdlib/libcpp.hpp \
 include/boost/config/stdlib/libstdcpp3.hpp \
 include/boost/config/suffix.hpp \
 include/boost/config/user.hpp \
@@ -298,7 +395,6 @@ include/boost/functional/hash/detail/limits.hpp \
 include/boost/functional/hash/extensions.hpp \
 include/boost/functional/hash/hash.hpp \
 include/boost/functional/hash/hash_fwd.hpp \
-include/boost/functional/hash_fwd.hpp \
 include/boost/get_pointer.hpp \
 include/boost/integer.hpp \
 include/boost/integer/static_log2.hpp \
@@ -425,17 +521,12 @@ include/boost/mpl/aux_/preprocessed/gcc/bind.hpp \
 include/boost/mpl/aux_/preprocessed/gcc/bind_fwd.hpp \
 include/boost/mpl/aux_/preprocessed/gcc/bitand.hpp \
 include/boost/mpl/aux_/preprocessed/gcc/bitxor.hpp \
-include/boost/mpl/aux_/preprocessed/gcc/equal_to.hpp \
 include/boost/mpl/aux_/preprocessed/gcc/fold_impl.hpp \
 include/boost/mpl/aux_/preprocessed/gcc/full_lambda.hpp \
-include/boost/mpl/aux_/preprocessed/gcc/greater.hpp \
-include/boost/mpl/aux_/preprocessed/gcc/greater_equal.hpp \
 include/boost/mpl/aux_/preprocessed/gcc/iter_fold_if_impl.hpp \
 include/boost/mpl/aux_/preprocessed/gcc/iter_fold_impl.hpp \
 include/boost/mpl/aux_/preprocessed/gcc/less.hpp \
-include/boost/mpl/aux_/preprocessed/gcc/less_equal.hpp \
 include/boost/mpl/aux_/preprocessed/gcc/minus.hpp \
-include/boost/mpl/aux_/preprocessed/gcc/not_equal_to.hpp \
 include/boost/mpl/aux_/preprocessed/gcc/or.hpp \
 include/boost/mpl/aux_/preprocessed/gcc/placeholders.hpp \
 include/boost/mpl/aux_/preprocessed/gcc/plus.hpp \
@@ -472,12 +563,10 @@ include/boost/mpl/bool.hpp \
 include/boost/mpl/bool_fwd.hpp \
 include/boost/mpl/clear.hpp \
 include/boost/mpl/clear_fwd.hpp \
-include/boost/mpl/comparison.hpp \
 include/boost/mpl/deref.hpp \
 include/boost/mpl/distance.hpp \
 include/boost/mpl/distance_fwd.hpp \
 include/boost/mpl/empty_fwd.hpp \
-include/boost/mpl/equal_to.hpp \
 include/boost/mpl/eval_if.hpp \
 include/boost/mpl/find_if.hpp \
 include/boost/mpl/fold.hpp \
@@ -485,8 +574,6 @@ include/boost/mpl/for_each.hpp \
 include/boost/mpl/front.hpp \
 include/boost/mpl/front_fwd.hpp \
 include/boost/mpl/front_inserter.hpp \
-include/boost/mpl/greater.hpp \
-include/boost/mpl/greater_equal.hpp \
 include/boost/mpl/has_xxx.hpp \
 include/boost/mpl/identity.hpp \
 include/boost/mpl/if.hpp \
@@ -505,7 +592,6 @@ include/boost/mpl/iterator_tags.hpp \
 include/boost/mpl/lambda.hpp \
 include/boost/mpl/lambda_fwd.hpp \
 include/boost/mpl/less.hpp \
-include/boost/mpl/less_equal.hpp \
 include/boost/mpl/limits/arity.hpp \
 include/boost/mpl/limits/vector.hpp \
 include/boost/mpl/logical.hpp \
@@ -518,7 +604,6 @@ include/boost/mpl/negate.hpp \
 include/boost/mpl/next.hpp \
 include/boost/mpl/next_prior.hpp \
 include/boost/mpl/not.hpp \
-include/boost/mpl/not_equal_to.hpp \
 include/boost/mpl/numeric_cast.hpp \
 include/boost/mpl/or.hpp \
 include/boost/mpl/pair.hpp \
@@ -579,29 +664,6 @@ include/boost/next_prior.hpp \
 include/boost/noncopyable.hpp \
 include/boost/none.hpp \
 include/boost/none_t.hpp \
-include/boost/numeric/ublas/detail/config.hpp \
-include/boost/numeric/ublas/detail/definitions.hpp \
-include/boost/numeric/ublas/detail/iterator.hpp \
-include/boost/numeric/ublas/detail/matrix_assign.hpp \
-include/boost/numeric/ublas/detail/returntype_deduction.hpp \
-include/boost/numeric/ublas/detail/temporary.hpp \
-include/boost/numeric/ublas/detail/vector_assign.hpp \
-include/boost/numeric/ublas/exception.hpp \
-include/boost/numeric/ublas/expression_types.hpp \
-include/boost/numeric/ublas/functional.hpp \
-include/boost/numeric/ublas/fwd.hpp \
-include/boost/numeric/ublas/io.hpp \
-include/boost/numeric/ublas/lu.hpp \
-include/boost/numeric/ublas/matrix.hpp \
-include/boost/numeric/ublas/matrix_expression.hpp \
-include/boost/numeric/ublas/matrix_proxy.hpp \
-include/boost/numeric/ublas/operation.hpp \
-include/boost/numeric/ublas/storage.hpp \
-include/boost/numeric/ublas/traits.hpp \
-include/boost/numeric/ublas/triangular.hpp \
-include/boost/numeric/ublas/vector.hpp \
-include/boost/numeric/ublas/vector_expression.hpp \
-include/boost/numeric/ublas/vector_proxy.hpp \
 include/boost/operators.hpp \
 include/boost/optional.hpp \
 include/boost/optional/optional.hpp \
@@ -803,26 +865,6 @@ include/boost/ratio/ratio_fwd.hpp \
 include/boost/ref.hpp \
 include/boost/scoped_array.hpp \
 include/boost/scoped_ptr.hpp \
-include/boost/serialization/access.hpp \
-include/boost/serialization/array.hpp \
-include/boost/serialization/base_object.hpp \
-include/boost/serialization/collection_size_type.hpp \
-include/boost/serialization/force_include.hpp \
-include/boost/serialization/is_bitwise_serializable.hpp \
-include/boost/serialization/level.hpp \
-include/boost/serialization/level_enum.hpp \
-include/boost/serialization/nvp.hpp \
-include/boost/serialization/pfto.hpp \
-include/boost/serialization/serialization.hpp \
-include/boost/serialization/split_free.hpp \
-include/boost/serialization/split_member.hpp \
-include/boost/serialization/strong_typedef.hpp \
-include/boost/serialization/tracking.hpp \
-include/boost/serialization/tracking_enum.hpp \
-include/boost/serialization/traits.hpp \
-include/boost/serialization/type_info_implementation.hpp \
-include/boost/serialization/void_cast_fwd.hpp \
-include/boost/serialization/wrapper.hpp \
 include/boost/shared_array.hpp \
 include/boost/shared_ptr.hpp \
 include/boost/signal.hpp \
@@ -1070,9 +1112,6 @@ include/boost/type_traits/remove_pointer.hpp \
 include/boost/type_traits/remove_reference.hpp \
 include/boost/type_traits/remove_volatile.hpp \
 include/boost/type_traits/type_with_alignment.hpp \
-include/boost/typeof/message.hpp \
-include/boost/typeof/native.hpp \
-include/boost/typeof/typeof.hpp \
 include/boost/utility.hpp \
 include/boost/utility/addressof.hpp \
 include/boost/utility/base_from_member.hpp \
@@ -1089,35 +1128,6 @@ include/boost/utility/value_init.hpp \
 include/boost/version.hpp \
 include/boost/visit_each.hpp \
 include/boost/weak_ptr.hpp \
-include/boost/config/compiler/visualc.hpp \
-include/boost/config/platform/win32.hpp \
-include/boost/config/stdlib/dinkumware.hpp \
-include/boost/mpl/aux_/preprocessed/plain/advance_backward.hpp \
-include/boost/mpl/aux_/preprocessed/plain/advance_forward.hpp \
-include/boost/mpl/aux_/preprocessed/plain/and.hpp \
-include/boost/mpl/aux_/preprocessed/plain/apply.hpp \
-include/boost/mpl/aux_/preprocessed/plain/apply_fwd.hpp \
-include/boost/mpl/aux_/preprocessed/plain/apply_wrap.hpp \
-include/boost/mpl/aux_/preprocessed/plain/arg.hpp \
-include/boost/mpl/aux_/preprocessed/plain/bind.hpp \
-include/boost/mpl/aux_/preprocessed/plain/bind_fwd.hpp \
-include/boost/mpl/aux_/preprocessed/plain/equal_to.hpp \
-include/boost/mpl/aux_/preprocessed/plain/full_lambda.hpp \
-include/boost/mpl/aux_/preprocessed/plain/greater.hpp \
-include/boost/mpl/aux_/preprocessed/plain/less.hpp \
-include/boost/mpl/aux_/preprocessed/plain/minus.hpp \
-include/boost/mpl/aux_/preprocessed/plain/or.hpp \
-include/boost/mpl/aux_/preprocessed/plain/placeholders.hpp \
-include/boost/mpl/aux_/preprocessed/plain/plus.hpp \
-include/boost/mpl/aux_/preprocessed/plain/quote.hpp \
-include/boost/mpl/aux_/preprocessed/plain/template_arity.hpp \
-include/boost/mpl/vector/aux_/preprocessed/plain/vector10.hpp \
-include/boost/mpl/vector/aux_/preprocessed/plain/vector20.hpp \
-include/boost/preprocessor/control/detail/msvc/while.hpp \
-include/boost/preprocessor/repetition/detail/msvc/for.hpp \
-include/boost/type_traits/detail/is_function_ptr_tester.hpp \
-include/boost/type_traits/detail/is_mem_fun_pointer_tester.hpp \
-include/boost/typeof/msvc/typeof_impl.hpp \
 "
 
 usage() {
@@ -1151,6 +1161,18 @@ debug "archive: " "${archive}"
 debug "archiveBase: " "${archiveBase}"
 debug "archiveDir: " "${archiveDir}"
 
+# francesco opencv try
+for f in ${includesOpenCV}
+do
+  opencvIncludes+="${archiveDir}/${f} "
+done
+for f in ${libsOpencv}
+do
+  opencvLibs+="${archiveDir}/${f} "
+done
+opencvContent="${opencvIncludes}${opencvLibs}"
+# end try
+
 for f in ${includesAlcommon}
 do
   alcommonIncludes+="${archiveDir}/${f} "
@@ -1163,17 +1185,44 @@ done
 
 alcommonContent="${alcommonIncludes}${archiveDir}/lib/libalcommon.so"
 echo -n "Unpacking required content..."
+# francesco opencv try
+tar -xz -C "${tmpdir}" -f "${archive}" ${opencvContent}
+# end try
 tar -xz -C "${tmpdir}" -f "${archive}" ${alcommonContent}
 tar -xz -C "${tmpdir}" -f "${archive}" ${boostIncludes}
 echo "Done"
 
+# francesco opencv try
+echo -n "Copying opencv headers to destination..."
+for f in ${includesOpenCV}
+do
+  destFile="${f#include/}"
+  dirOfFile="$(dirname "${destFile}")"
+
+  if [ ! -d "${baseDir}/../Util/opencv/include/${dirOfFile}" ]
+  then
+    mkdir -p "${baseDir}/../Util/opencv/include/${dirOfFile}"
+  fi
+  LC_ALL='C' tr -d '\r' < "${tmpdir}/${archiveDir}/${f}" > "${baseDir}/../Util/opencv/include/${destFile}"
+done
+echo "Done"
+
+echo -n "Copying opencv libraries to destination..."
+mkdir -p "${baseDir}/../Util/opencv/lib/"
+for f in ${libsOpencv}
+do
+  cp "${tmpdir}/${archiveDir}/${f}" "${baseDir}/../Util/opencv/${f}"
+done
+echo "Done"
+# end try
+
 echo -n "Copying alcommon headers to destination..."
-mkdir -p "${baseDir}/../Util/alcommon/include" 
+mkdir -p "${baseDir}/../Util/alcommon/include"
 for f in ${includesAlcommon}
 do
   destFile="${f#include/}"
   dirOfFile="$(dirname "${destFile}")"
-  
+
   if [ ! -d "${baseDir}/../Util/alcommon/include/${dirOfFile}" ]
   then
     mkdir -p "${baseDir}/../Util/alcommon/include/${dirOfFile}"
@@ -1183,7 +1232,7 @@ done
 echo "Done"
 
 echo -n "Copying alcommon library to destination..."
-mkdir -p "${baseDir}/../Util/alcommon/lib/linux" 
+mkdir -p "${baseDir}/../Util/alcommon/lib/linux"
 cp "${tmpdir}/${archiveDir}/lib/libalcommon.so" "${baseDir}/../Util/alcommon/lib/linux/libalcommon.so"
 echo "Done"
 
@@ -1192,7 +1241,7 @@ for f in ${includesBoost}
 do
   destFile="${f#include/}"
   dirOfFile="$(dirname "${destFile}")"
-  
+
   debug "\tdestFile:  $destFile"
   debug "\tdirOfFile: $dirOfFile"
 

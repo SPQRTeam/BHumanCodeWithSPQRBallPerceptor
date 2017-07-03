@@ -15,6 +15,7 @@
 #include "Representations/Infrastructure/FrameInfo.h"
 #include "Representations/Infrastructure/Image.h"
 #include "Representations/Infrastructure/RobotInfo.h"
+#include "Representations/Configuration/SPQRDefinitions.h"
 #include "Tools/Module/Module.h"
 
 class NaoCamera;

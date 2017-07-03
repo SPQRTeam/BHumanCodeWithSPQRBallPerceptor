@@ -13,6 +13,11 @@
 #include "Tools/Streams/InStreams.h"
 #include "Tools/Debugging/Stopwatch.h"
 
+#include "opencv2/imgproc/imgproc.hpp"
+#include "opencv2/highgui/highgui.hpp"
+
+#include <iostream>
+
 thread_local CameraProvider* CameraProvider::theInstance = nullptr;
 
 CameraProvider::CameraProvider() :
@@ -58,6 +63,7 @@ void CameraProvider::update(Image& image)
   ASSERT(image.timeStamp >= lastImageTimeStamp);
   lastImageTimeStamp = image.timeStamp;
   MODIFY("module:CameraProvider:fullSize", image.isFullSize);
+
 #endif // CAMERA_INCLUDED
   STOPWATCH("compressJPEG")
   {
@@ -76,17 +82,103 @@ void CameraProvider::useImage(bool isUpper, CameraInfo& cameraInfo, Image& image
 {
 #ifdef CAMERA_INCLUDED
   image.setResolution(cameraInfo.width / 2, cameraInfo.height / 2, true);
-  image.setImage(const_cast<unsigned char*>(naoCam->getImage()));
+  unsigned char* im = const_cast<unsigned char*>(naoCam->getImage());
+
+  int height = cameraInfo.height / 2, width = cameraInfo.width / 2;
+
+  image.setImage(const_cast<unsigned char*>(im));
   image.timeStamp = stamp;
   settings.enforceBounds();
   naoCam->setSettings(settings);
+
+  // Fill CV Mat
+  int cv_height = height * 2, cv_width = width * 2;
+  image.cv_image_high_resolution.create(cv_height, cv_width, CV_8UC3);
+  //std::cerr <<  "first image size: " << image.cv_image_high_resolution.size() << std::endl;
+  cv::Mat ycbcrMat_high, ycbcrMat_low;
+  ycbcrMat_high.create(cv_height, cv_width, CV_8UC3);
+  if(isUpper)
+    ycbcrMat_low.create(UPPER_CAMERA_HEIGHT, UPPER_CAMERA_WIDTH, CV_8UC3);
+  else
+    ycbcrMat_low.create(LOWER_CAMERA_HEIGHT, LOWER_CAMERA_WIDTH, CV_8UC3);
+
+  int nCols_high = ycbcrMat_high.cols * ycbcrMat_high.rows;
+  int nChannels = ycbcrMat_high.channels();
+  assert(nChannels == ycbcrMat_low.channels());
+
+  uchar* p_high = ycbcrMat_high.ptr<uchar>(0);
+  uchar* p_low  = ycbcrMat_low.ptr<uchar>(0);
+  unsigned char y1, u , y2, v;
+  uint offset_high, offset_low;
+  int counter = 0;
+  bool row_read = false;
+  for (int i = 0, i_low = 0; i<nCols_high; i+=2)
+  {
+      y1 = *im++;//y1
+      u = *im++; //cb
+      y2 = *im++;//y2
+      v = *im++;//cr
+
+      offset_high = i*nChannels;
+      p_high[offset_high]   = y1;
+      p_high[++offset_high] = v;
+      p_high[++offset_high] = u;
+      p_high[++offset_high] = y2;
+      p_high[++offset_high] = v;
+      p_high[++offset_high] = u;
+      if (counter % (cv_width / 2) == 0)
+      {
+          row_read = !row_read;
+          counter = 0;
+      }
+      ++counter;
+
+      if (row_read)
+      {
+          offset_low  = i_low*nChannels;
+          p_low[offset_low]   = y2;  //
+          p_low[++offset_low] = v; //
+          p_low[++offset_low] = u; //
+          ++i_low;
+      }
+
+  }
+
+  cvtColor(ycbcrMat_high, image.cv_image_high_resolution, CV_YCrCb2BGR);
+  cvtColor(ycbcrMat_low, image.cv_image, CV_YCrCb2BGR);
+
+
   if(isUpper)
   {
+    //  std::string name = "highu.png";
+    //  if (cv::imwrite( name, image.cv_image_high_resolution )) {
+    //      std::cerr << std::to_string(theImage.timeStamp).c_str() << " salvata" << std::endl;
+    //  } else {
+    //      std::cerr << "error saving " << std::to_string(theImage.timeStamp).c_str() << std::endl;
+    //  }
+    //  name = "lowu.png";
+    //  if (cv::imwrite( name, image.cv_image )) {
+    //      std::cerr << std::to_string(theImage.timeStamp).c_str() << " salvata" << std::endl;
+    //  } else {
+    //      std::cerr << "error saving " << std::to_string(theImage.timeStamp).c_str() << std::endl;
+    //  }
     DEBUG_RESPONSE_ONCE("module:CameraProvider:doWhiteBalanceUpper") naoCam->doAutoWhiteBalance();
     DEBUG_RESPONSE_ONCE("module:CameraProvider:readCameraSettingsUpper") naoCam->readCameraSettings();
   }
   else
   {
+    //  std::string name = "highl.png";
+    //  if (cv::imwrite( name, image.cv_image_high_resolution )) {
+    //      std::cerr << std::to_string(theImage.timeStamp).c_str() << " salvata" << std::endl;
+    //  } else {
+    //      std::cerr << "error saving " << std::to_string(theImage.timeStamp).c_str() << std::endl;
+    //  }
+    //  name = "lowl.png";
+    //  if (cv::imwrite( name, image.cv_image )) {
+    //      std::cerr << std::to_string(theImage.timeStamp).c_str() << " salvata" << std::endl;
+    //  } else {
+    //      std::cerr << "error saving " << std::to_string(theImage.timeStamp).c_str() << std::endl;
+    //  }
     DEBUG_RESPONSE_ONCE("module:CameraProvider:doWhiteBalanceLower") naoCam->doAutoWhiteBalance();
     DEBUG_RESPONSE_ONCE("module:CameraProvider:readCameraSettingsLower") naoCam->readCameraSettings();
   }
@@ -262,6 +354,7 @@ void CameraProvider::setupCameras()
     delete upperCamera;
   if(lowerCamera != nullptr)
     delete lowerCamera;
+
   upperCamera = new NaoCamera("/dev/video0", upperCameraInfo.camera, upperCameraInfo.width, upperCameraInfo.height, true);
   lowerCamera = new NaoCamera("/dev/video1", lowerCameraInfo.camera, lowerCameraInfo.width, lowerCameraInfo.height, false);
   cycleTime = upperCamera->getFrameRate();

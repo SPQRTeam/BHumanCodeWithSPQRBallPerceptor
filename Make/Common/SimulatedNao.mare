@@ -22,6 +22,8 @@ SimulatedNao = cppDynamicLibrary + {
     "$(srcDirRoot)/Representations/**.h"
     "$(srcDirRoot)/Tools/**.cpp" = bhCppSource
     "$(srcDirRoot)/Tools/**.h"
+    "$(srcDirRoot)/SPQR-Libraries/PTracking/**.cpp" = cppSource,
+    "$(srcDirRoot)/SPQR-Libraries/PTracking/**.h",
     -"$(srcDirRoot)/Tools/Precompiled/ControllerPch.*"
   }
   files += pchFiles
@@ -40,6 +42,8 @@ SimulatedNao = cppDynamicLibrary + {
   }
 
   includePaths = {
+
+    "$(utilDirRoot)/opencv/include",
     "$(srcDirRoot)"
     "$(utilDirRoot)/Eigen"
     "$(utilDirRoot)/GameController/include"
@@ -82,6 +86,7 @@ SimulatedNao = cppDynamicLibrary + {
   }
 
   libPaths = {
+    "$(utilDirRoot)/opencv/lib",
     "$(buildPlatformDir)/Controller/$(configuration)"
     "$(buildPlatformDir)/qtpropertybrowser/$(configuration)"
     "$(buildPlatformDir)/libqxt/$(configuration)"
@@ -97,6 +102,10 @@ SimulatedNao = cppDynamicLibrary + {
   }
 
   libs = {
+    "opencv_core",
+    "opencv_imgproc",
+    "opencv_objdetect",
+    "opencv_highgui",
     "Controller", "qtpropertybrowser", "qxt"
     if (host == "Win32") {
       if (configuration == "Debug") {
@@ -108,7 +117,7 @@ SimulatedNao = cppDynamicLibrary + {
       }
       "winmm", "opengl32", "glu32", "ws2_32", "libjpeg"
     } else if (platform == "Linux") {
-      "Qt5Core", "Qt5Gui", "Qt5Network", "Qt5OpenGL", "Qt5Svg", "Qt5Widgets"
+      "Qt5Core", "Qt5Gui", "Qt5Network", "Qt5OpenGL", "Qt5Svg", "Qt5Widgets",
       "rt", "pthread", "GLEW", "GLU", "GL", "fftw3", "jpeg", "snappy"
     }
   }
@@ -130,6 +139,9 @@ SimulatedNao = cppDynamicLibrary + {
       "-Wno-switch" // deactivating this is a problem because of the ENUM macro, since numOf<ENUM>s is never used in switch.
       "-Wconversion"
       "-Wno-sign-conversion"
+      "-Woverloaded-virtual"
+      "-Wconversion"
+      "-Wshorten-64-to-32"
       if (configuration == "Develop") {
         -"-O3 -fomit-frame-pointer", "-g"
       }

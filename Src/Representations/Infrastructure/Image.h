@@ -10,6 +10,8 @@
 #include "Tools/Streams/Streamable.h"
 #include "Representations/Infrastructure/CameraInfo.h"
 
+#include "opencv2/core/core.hpp"
+
 /**
  * The union defines a pixel in YCbCr space.
  */
@@ -46,6 +48,9 @@ union ColorPixel
 struct Image : public Streamable
 {
 public:
+  cv::Mat cv_image;
+  cv::Mat cv_image_high_resolution;
+
   using Pixel = ColorPixel;
 
   static constexpr int maxResolutionWidth = 640;
@@ -64,6 +69,7 @@ private:
   Pixel* image; /**< The image. Please note that the second half of each row must be ignored. */
 
 public:
+
   /**
    * @param initialize Whether to initialize the image in gray or not
    */

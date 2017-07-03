@@ -11,6 +11,8 @@
 #include "Tools/Debugging/DebugImages.h"
 #include <iostream>
 
+#include "opencv2/imgproc/imgproc.hpp"
+
 thread_local CognitionLogDataProvider* CognitionLogDataProvider::theInstance = nullptr;
 
 MAKE_MODULE(CognitionLogDataProvider, cognitionInfrastructure)
@@ -48,6 +50,26 @@ void CognitionLogDataProvider::update(Image& image)
       image.isFullSize = true;
     }
   }
+
+  // Fill the cv::Mat
+  image.cv_image = cv::Mat(image.height, image.width, CV_8UC3);
+
+  cv::Mat ycbcrMat(image.height, image.width, CV_8UC3);
+  for (int i=0; i<image.height; i++) {
+    for (int j=0; j<image.width; j++) {
+      ycbcrMat.at<cv::Vec3b>(i,j)[0] = image[i][j].y;
+      ycbcrMat.at<cv::Vec3b>(i,j)[1] = image[i][j].cr;//image[i][j
+      ycbcrMat.at<cv::Vec3b>(i,j)[2] = image[i][j].cb;
+    }
+  }
+  cvtColor(ycbcrMat, image.cv_image, CV_YCrCb2BGR);
+
+  if (info.camera == CameraInfo::upper)
+    cv::resize(image.cv_image, image.cv_image, cv::Size(UPPER_CAMERA_WIDTH, UPPER_CAMERA_HEIGHT));
+  else
+    cv::resize(image.cv_image, image.cv_image, cv::Size(LOWER_CAMERA_WIDTH, LOWER_CAMERA_HEIGHT));
+
+  image.cv_image_high_resolution = image.cv_image.clone();
 
   static const float distance = 300.f;
 
@@ -146,17 +168,17 @@ bool CognitionLogDataProvider::handleMessage2(InMessage& message)
       }
       return true;
 
-    case idImagePatches:
-      if(Blackboard::getInstance().exists("Image"))
-      {
-        ImagePatches imagePatches;
-        message.bin >> imagePatches;
-        if(fillImagePatchesBackground)
-          imagePatches.toImage((Image&) Blackboard::getInstance()["Image"], imagePatchesBackgroundColor);
-        else
-          imagePatches.toImage((Image&) Blackboard::getInstance()["Image"]);
-      }
-      return true;
+    //case idImagePatches:
+    //  if(Blackboard::getInstance().exists("Image"))
+    //  {
+    //    ImagePatches imagePatches;
+    //    message.bin >> imagePatches;
+    //    if(fillImagePatchesBackground)
+    //      imagePatches.toImage((Image&) Blackboard::getInstance()["Image"], imagePatchesBackgroundColor);
+    //    else
+    //      imagePatches.toImage((Image&) Blackboard::getInstance()["Image"]);
+    //  }
+    //  return true;
 
     case idThumbnail:
       if(Blackboard::getInstance().exists("Image"))

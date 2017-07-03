@@ -52,6 +52,7 @@
 #include "Representations/Sensing/GroundContactState.h"
 #include "Tools/ImageProcessing/PixelTypes.h"
 #include "Tools/ImageProcessing/TImage.h"
+#include "Representations/Configuration/SPQRDefinitions.h"
 
 MODULE(CognitionLogDataProvider,
 {,

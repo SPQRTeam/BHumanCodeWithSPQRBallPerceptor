@@ -27,6 +27,8 @@ Nao = cppApplication + {
     "$(srcDirRoot)/Representations/**.h"
     "$(srcDirRoot)/Tools/**.cpp" = cppSource
     "$(srcDirRoot)/Tools/**.h"
+    "$(srcDirRoot)/SPQR-Libraries/PTracking/**.cpp" = cppSource,
+    "$(srcDirRoot)/SPQR-Libraries/PTracking/**.h",
   }
 
   defines += {
@@ -37,6 +39,7 @@ Nao = cppApplication + {
   output = "$(buildDir)/bhuman"
 
   includePaths = {
+    "$(utilDirRoot)/opencv/include",
     "$(srcDirRoot)"
     "$(srcDirRoot)/Tools/Precompiled"
     "$(utilDirRoot)/Eigen"
@@ -52,6 +55,7 @@ Nao = cppApplication + {
   }
 
   libPaths = {
+    "$(utilDirRoot)/opencv/lib",
     "$(utilDirRoot)/fftw-3.3/Linux32"
     "$(utilDirRoot)/libjpeg/lib/Linux"
     "$(utilDirRoot)/Buildchain/gcc/lib"
@@ -59,6 +63,10 @@ Nao = cppApplication + {
   }
 
   libs = {
+    "opencv_core",
+    "opencv_imgproc",
+    "opencv_objdetect",
+    "opencv_highgui",
     "rt-2.13", "jpeg-atom", "pthread-2.13", "pthread_nonshared", "fftw3", "snappy", "asound", "dl-2.13"
   }
 
@@ -66,6 +74,9 @@ Nao = cppApplication + {
     "-Wconversion"
     "-Wno-sign-conversion"
     "-nostdinc -march=atom -target i686-pc-linux-gnu"
+	"-Woverloaded-virtual"
+    "-Wconversion"
+    "-Wshorten-64-to-32"
     if (host == "Win32") { "-x c++" }
     if (tool != "vcxproj") {
       "-Wno-switch" // deactivating this is a problem because of the ENUM macro, since numOf<ENUM>s is never used in switch.
