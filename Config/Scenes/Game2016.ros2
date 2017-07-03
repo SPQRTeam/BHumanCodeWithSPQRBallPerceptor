@@ -8,7 +8,15 @@
   <Scene name="RoboCup" controller="SimulatedNao" stepLength="0.01" color="rgb(65%, 65%, 70%)" ERP="0.8" CFM="0.001" contactSoftERP="0.2" contactSoftCFM="0.005">
     <!-- <QuickSolver iterations="100" skip="2"/>  -->
 
-    <Light z="9m" ambientColor="rgb(50%, 50%, 50%)"/>
+    <Light z="9m" x="0m" y ="0m" ambientColor="rgb(50%, 50%, 50%)" />
+
+    <Light z="1cm" x="-10m" y ="-10m" ambientColor="rgb(5%, 10%, 5%)" diffuseColor="rgb(10%, 20%, 10%)"/>
+
+    <Light z="1cm" x="10m" y ="10m" ambientColor="rgb(5%, 10%, 5%)" diffuseColor="rgb(10%, 20%, 10%)"  />
+
+    <Light z="1cm" x="10m" y ="-10m" ambientColor="rgb(5%, 10%, 5%)" diffuseColor="rgb(10%, 20%, 10%)"/>
+
+    <Light z="1cm" x="-10m" y ="10m"  ambientColor="rgb(5%, 10%, 5%)" diffuseColor="rgb(10%, 20%, 10%)" />
 
     <Compound name="robots">
       <Body ref="Nao" name="robot1">
