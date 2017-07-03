@@ -15,10 +15,10 @@
 #include "Representations/Infrastructure/RobotInfo.h"
 #include "Representations/Perception/BallPercepts/BallPercept.h"
 #include "Representations/Modeling/RobotPose.h"
+#include "Representations/Modeling/TeamBallModel.h"
 #include "Representations/Configuration/SPQRDefinitions.h"
 #include "Representations/Perception/PlayersPercepts/PlayersPercept.h"
 #include "Representations/Configuration/FieldDimensions.h"
-#include "Representations/Modeling/TeamBallModel.h"
 #include "opencv2/core/core.hpp"
 
 #ifdef TARGET_ROBOT
@@ -34,12 +34,12 @@ MODULE(BallSpotPatchesProvider,
   REQUIRES(FieldDimensions),
   REQUIRES(Image),
   REQUIRES(PlayersPercept),
-  USES(TeamBallModel),
 #ifdef TARGET_ROBOT
   REQUIRES(BodyContour),
 #endif
   USES(RobotInfo),
   USES(RobotPose),
+  USES(TeamBallModel),
   USES(BallPercept),
   PROVIDES(ImagePatches),
   LOADS_PARAMETERS(

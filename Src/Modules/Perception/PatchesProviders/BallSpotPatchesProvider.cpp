@@ -22,7 +22,6 @@
 
 #define IS_GOALIE (theRobotInfo.number == 1)
 
-
 #ifdef PENALTY_STRIKER_GOALIE
     #undef USE_HIGH_RES_IMAGE
     #define UPPER_DIVIDE_3_PATROLING
@@ -361,7 +360,7 @@ bool BallSpotPatchesProvider::checkBallPosition(Vector2i ball)
   int horizon = std::max(2, (int) theImageCoordinateSystem.origin.y());
   horizon = std::min(horizon, height);
   
-  if (ball.y() <= horizon)
+  if (ball.y() <= horizon - 20)
     return false;
 
 #ifndef INCLUDE_PATCHES_ON_OBSTACLES

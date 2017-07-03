@@ -15,7 +15,6 @@
 #include <algorithm>
 #include <iostream>
 
-
 #define IS_GOALIE (theRobotInfo.number == 1)
 #define TOBHUMANF_RES(x,highRes) ((highRes)?x:TOBHUMANF(x))
 
@@ -28,6 +27,7 @@ CascadeBallPerceptor::CascadeBallPerceptor()
 {
 	string configDirectory;
 	char currentWorkingDirectory[1024];
+	int counter;
 
 	configDirectory = "";
 
@@ -292,7 +292,7 @@ bool CascadeBallPerceptor::findBallOnPatch(ImagePatch patch, BallPercept ballPer
       {
         Vector2i ball = Vector2i(balls[b].x + (cvRound(balls[b].width) >> 1) + patch.offset.x(),
             	balls[b].y + (cvRound(balls[b].height) >> 1) + patch.offset.y());
-        short radius = cvRound(balls[b].height)  >> 1;
+        int radius = cvRound(balls[b].height)  >> 1;
         if (DEBUG)
 			std::cerr << "ball size: " << radius << std::endl;
 
@@ -358,6 +358,7 @@ bool CascadeBallPerceptor::checkBallOnImage(Vector2i ball, ImagePatch patch)
 
   //> calculate the image limits
   int height = theCameraInfo.height - 3;
+  int right = theCameraInfo.width - 3;
 
   int horizon = std::max(2, (int) theImageCoordinateSystem.origin.y());
   horizon = std::min(horizon, height);
@@ -371,8 +372,8 @@ bool CascadeBallPerceptor::checkBallOnImage(Vector2i ball, ImagePatch patch)
 	//> check on obstacles on image
 	for (const auto player : thePlayersPercept.players)
 	{
-		short maxBallDiameterOnFeet = (short)IISC::getImageBallRadiusByCenter(Vector2f(player.x2, player.y2), theCameraInfo, theCameraMatrix, theFieldDimensions);
-		maxBallDiameterOnFeet = (short)maxBallDiameterOnFeet << 1;
+		short maxBallDiameterOnFeet = IISC::getImageBallRadiusByCenter(Vector2f(player.x2, player.y2), theCameraInfo, theCameraMatrix, theFieldDimensions);
+		maxBallDiameterOnFeet = maxBallDiameterOnFeet << 1;
 		LINE("module:CNSBallPerceptor:candidates", player.x1FeetOnly, player.y2 - (maxBallDiameterOnFeet << 1),
 					player.x2FeetOnly, player.y2 - (maxBallDiameterOnFeet << 1), 5, Drawings::solidPen, ColorRGBA::white);
 			
@@ -514,9 +515,9 @@ bool CascadeBallPerceptor::checkBallOnField(BallPercept& ballPercept) const
     if (BLOCK_BALLS_WITH_BAD_RADIUS)
     {
 		//> check ball radius given by the cascade with the computed one w.r.t. the position
-		short computedDiameter = (short)IISC::getImageBallRadiusByCenter(ballPercept.positionInImage, theCameraInfo, theCameraMatrix, theFieldDimensions);
-		computedDiameter = (short)computedDiameter << 1;
-		short absDiff = (short)abs(computedDiameter - (int(ballPercept.radiusInImage) << 1));
+		short computedDiameter = IISC::getImageBallRadiusByCenter(ballPercept.positionInImage, theCameraInfo, theCameraMatrix, theFieldDimensions);
+		computedDiameter = computedDiameter << 1;
+		short absDiff = abs(computedDiameter - (int(ballPercept.radiusInImage) << 1));
 		//CIRCLE("module:CNSBallPerceptor:candidates", ballPercept.positionInImage.x(), ballPercept.positionInImage.y(), computedDiameter >> 1,
 		//        3, Drawings::dottedPen, ColorRGBA::green, Drawings::BrushStyle::noBrush, ColorRGBA::green);
 		ballPercept.radiusInImage = computedDiameter >> 1;
