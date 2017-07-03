@@ -12,6 +12,7 @@
 #include "Simulation/Body.h"
 #include "Simulation/Actuators/Actuator.h"
 
+
 void Scene::updateTransformations()
 {
   if(lastTransformationUpdateStep != Simulation::simulation->simulationStep)
@@ -26,6 +27,19 @@ void Scene::updateActuators()
 {
   for(std::list<Actuator::Port*>::const_iterator iter = actuators.begin(), end = actuators.end(); iter != end; ++iter)
     (*iter)->act();
+}
+
+void Scene::updateLightsPosition()
+{
+  int i = 0;
+  for(std::list<Light*>::const_iterator iter = lights.begin(), end = lights.end(); iter != end; ++iter, ++i)
+  {
+    const Light& light = *(*iter);
+    glEnable(GL_LIGHT0 + i);
+    glLightfv(GL_LIGHT0 + i, GL_POSITION, light.position);
+    float direction[] = {light.spotDirection.x, light.spotDirection.y, light.spotDirection.z};
+    glLightfv(GL_LIGHT0 + i, GL_SPOT_DIRECTION, direction);
+  }
 }
 
 void Scene::createGraphics(bool isShared)
@@ -58,6 +72,7 @@ void Scene::createGraphics(bool isShared)
   for(std::list<Light*>::const_iterator iter = lights.begin(), end = lights.end(); iter != end; ++iter, ++i)
   {
     const Light& light = *(*iter);
+    glEnable(GL_LIGHT0 + i);
     glLightfv(GL_LIGHT0 + i, GL_AMBIENT, light.ambientColor);
     glLightfv(GL_LIGHT0 + i, GL_DIFFUSE, light.diffuseColor);
     glLightfv(GL_LIGHT0 + i, GL_SPECULAR, light.specularColor);
@@ -67,9 +82,9 @@ void Scene::createGraphics(bool isShared)
     glLightfv(GL_LIGHT0 + i, GL_QUADRATIC_ATTENUATION, &light.quadraticAttenuation);
     float spotCutoff = light.spotCutoff * (180.f / float(M_PI));
     glLightfv(GL_LIGHT0 + i, GL_SPOT_CUTOFF, &spotCutoff);
-    glLightfv(GL_LIGHT0 + i, GL_SPOT_DIRECTION, &light.spotDirection.x);
+    float direction[] = {light.spotDirection.x, light.spotDirection.y, light.spotDirection.z};
+    glLightfv(GL_LIGHT0 + i, GL_SPOT_DIRECTION, direction);
     glLightfv(GL_LIGHT0 + i, GL_SPOT_EXPONENT, &light.spotExponent);
-    glEnable(GL_LIGHT0 + i);
   }
 
   // load display lists and textures

@@ -115,6 +115,8 @@ void Simulation::doSimulationStep()
     dWorldStep(physicalWorld, scene->stepLength);
   dJointGroupEmpty(contactGroup);
 
+  scene->updateLightsPosition();
+  
   updateFrameRate();
 }
 

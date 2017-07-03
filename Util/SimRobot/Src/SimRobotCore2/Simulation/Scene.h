@@ -83,6 +83,8 @@ public:
 
   /** Updates all actuators that need to do something for each simulation step */
   void updateActuators();
+  
+  void updateLightsPosition();
 
   /**
   * Prepares the object and the currently selected OpenGL context for drawing the object.
