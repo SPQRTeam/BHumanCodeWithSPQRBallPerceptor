@@ -1,7 +1,7 @@
 <Simulation>
 
   <!-- Ball texture by DaveH (http://www.headsub.com/Template/1048/Exploding-Football-Soccer-Ball) -->
-  <Surface name="ballTexture" diffuseColor="rgb(100%, 100%, 100%)" specularColor="rgb(60%, 60%, 60%)" shininess="30" diffuseTexture="../Textures/textures-ball.png"/>
+  <Surface name="ballTexture" ambientColor="rgb(40%, 40%, 40%)" diffuseColor="rgb(100%, 100%, 100%)" specularColor="rgb(90%, 90%, 90%)" shininess="30" diffuseTexture="../Textures/textures-ball.png"/>
 
   <Material name="ballPlastic">
     <Friction material="fieldCarpet" value="0.4"/>
