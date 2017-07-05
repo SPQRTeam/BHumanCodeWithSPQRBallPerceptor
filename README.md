@@ -31,14 +31,15 @@ The SPQR Ball Perceptor has been tested on Ubuntu 16.04 LTS. The following is th
   * libjpeg-turbo8-dev
 
 * On Ubuntu 16.04 it is possible to execute:
-`sudo apt−get install cmake lib gtk 2.0−dev pkg−config libavcodec−dev libavformat−dev libswscale−dev libjpeg8
+`sudo apt−get install cmake libgtk2.0−dev pkg−config libavcodec−dev libavformat−dev libswscale−dev libjpeg8
 libjpeg-turbo8−dbg lib32z1−dev libjpeg−turbo8−dev`
 
-* Then, it is necessary to installOpencv 2.4
+* Then, it is necessary to install *Opencv 2.4*
 
-* Then, it is possible to install the Code as explained in the B-Human code release documentation.
+* By following the B-Human code release documentation it is possible to conclude the code installation. 
 
-* Then, calibrate the Nao’s camera matrix and joints to improve the detection and to not discard far away balls.
+* To improve the detection and to not discard far away balls it is necessary to calibrate the Nao’s camera matrix and joints.
+
 
 ### Results
 
