@@ -20,3 +20,23 @@ RoboCup SPL Use Case"](http://profs.scienze.univr.it/~bloisi/tutorial/balldetect
 SPQR Ball Perceptor has been used by the SPQR Robot Soccer Team during the competitions of the Robocup German Open 2017.
 
 [![SPQR Ball Perceptor](http://img.youtube.com/vi/KFxiFpezvw0/0.jpg)](http://www.youtube.com/watch?v=KFxiFpezvw0 "SPQR Ball Perceptor")
+
+### SPQR Team 2017
+
+_Faculty_
+Daniele Nardi
+Luca Iocchi
+
+_Team Manager_
+Domenico Bloisi
+
+_Software Development Leader_
+Vincenzo Suriani
+
+_Members_
+Emanuele Antonioni
+Matteo Cecchini
+Francesco Del Duchetto
+Tiziano Manoni
+Armando Nania
+Marco Paolelli
