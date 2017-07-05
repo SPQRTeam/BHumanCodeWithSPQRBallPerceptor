@@ -21,6 +21,12 @@ SPQR Ball Perceptor has been used by the [SPQR Team](http://spqr.diag.uniroma1.i
 
 [![SPQR Ball Perceptor](http://img.youtube.com/vi/KFxiFpezvw0/0.jpg)](http://www.youtube.com/watch?v=KFxiFpezvw0 "SPQR Ball Perceptor")
 
+SPQR Ball Perceptor can be used both indoor and outdoor without any modification.
+
+[![SPQR Ball Perceptor indoor and outdoor](http://img.youtube.com/vi/fIgEwHRe6Bk/0.jpg)](http://www.youtube.com/watch?v=fIgEwHRe6Bk "SPQR Ball Perceptor indoor and outdoor")
+
+
+
 ### SPQR Team 2017
 
 _Faculty_  
