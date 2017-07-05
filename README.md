@@ -1,7 +1,7 @@
 SPQR Ball Perceptor
 =================
 
-**SPQR Ball Perceptor is provided WITHOUT ANY WARRANTY about its usability. It is for educational purposes and should be regarded as such.**
+***SPQR Ball Perceptor is provided WITHOUT ANY WARRANTY about its usability. It is for educational purposes and should be regarded as such. Please report bugs at sapienza.spqrteam@gmail.com***
 
 ### Introduction
 
@@ -24,8 +24,6 @@ SPQR Ball Perceptor has been used by the [SPQR Team](http://spqr.diag.uniroma1.i
 SPQR Ball Perceptor can be used both indoor and outdoor without any modification.
 
 [![SPQR Ball Perceptor indoor and outdoor](http://img.youtube.com/vi/fIgEwHRe6Bk/0.jpg)](http://www.youtube.com/watch?v=fIgEwHRe6Bk "SPQR Ball Perceptor indoor and outdoor")
-
-
 
 ### SPQR Team 2017
 
