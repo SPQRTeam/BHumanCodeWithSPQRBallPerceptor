@@ -31,8 +31,8 @@ The SPQR Ball Perceptor has been tested on Ubuntu 16.04 LTS. The following is th
   * libjpeg-turbo8-dev
 
 * On Ubuntu 16.04 it is possible to execute:
-`<sudo apt−get install cmake lib gtk 2.0−dev pkg−config libavcodec−dev libavformat−dev libswscale−dev libjpeg8
-libjpeg-turbo8−dbg lib32z1−dev libjpeg−turbo8−dev>`
+`sudo apt−get install cmake lib gtk 2.0−dev pkg−config libavcodec−dev libavformat−dev libswscale−dev libjpeg8
+libjpeg-turbo8−dbg lib32z1−dev libjpeg−turbo8−dev`
 
 * Then, it is necessary to installOpencv 2.4
 
