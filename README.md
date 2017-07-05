@@ -17,7 +17,7 @@ RoboCup SPL Use Case"](http://profs.scienze.univr.it/~bloisi/tutorial/balldetect
 
 ### Results
 
-SPQR Ball Perceptor has been used by the [SPQR Team](http://spqr.diag.uniroma1.it/) during the competitions of the Robocup German Open 2017.
+SPQR Ball Perceptor has been used by the [SPQR Team](http://spqr.diag.uniroma1.it/) during the competitions of the [Robocup German Open 2017](https://www.robocupgermanopen.de/en).
 
 [![SPQR Ball Perceptor](http://img.youtube.com/vi/KFxiFpezvw0/0.jpg)](http://www.youtube.com/watch?v=KFxiFpezvw0 "SPQR Ball Perceptor")
 
