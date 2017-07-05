@@ -1,6 +1,8 @@
 SPQR Ball Perceptor
 =================
 
+**SPQR Ball Perceptor is provided WITHOUT ANY WARRANTY about its usability. It is for educational purposes and should be regarded as such.**
+
 ### Introduction
 
 SPQR Ball Perceptor is a software module for black and white ball detection developed by the SPQR to be used within the BHuman framework. This repo is a fork from the official [2016 B-Human code release](https://github.com/bhuman/BHumanCodeRelease).
@@ -17,4 +19,4 @@ RoboCup SPL Use Case"](http://profs.scienze.univr.it/~bloisi/tutorial/balldetect
 
 SPQR Ball Perceptor has been used by the SPQR Robot Soccer Team during the competitions of the Robocup German Open 2017.
 
-
+[![SPQR Ball Perceptor](http://img.youtube.com/vi/KFxiFpezvw0/0.jpg)](http://www.youtube.com/watch?v=KFxiFpezvw0 "SPQR Ball Perceptor")
