@@ -23,20 +23,20 @@ SPQR Ball Perceptor has been used by the SPQR Robot Soccer Team during the compe
 
 ### SPQR Team 2017
 
-_Faculty_
-Daniele Nardi
-Luca Iocchi
+_Faculty_  
+Daniele Nardi  
+Luca Iocchi  
 
-_Team Manager_
-Domenico Bloisi
+_Team Manager_  
+Domenico Bloisi  
 
-_Software Development Leader_
-Vincenzo Suriani
+_Software Development Leader_  
+Vincenzo Suriani  
 
-_Members_
-Emanuele Antonioni
-Matteo Cecchini
-Francesco Del Duchetto
-Tiziano Manoni
-Armando Nania
-Marco Paolelli
+_Members_  
+Emanuele Antonioni  
+Matteo Cecchini  
+Francesco Del Duchetto  
+Tiziano Manoni  
+Armando Nania  
+Marco Paolelli  
