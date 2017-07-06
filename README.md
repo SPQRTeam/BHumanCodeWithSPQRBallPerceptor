@@ -7,7 +7,7 @@ SPQR Ball Perceptor
 
 SPQR Ball Perceptor is a software module for black and white ball detection developed by the [SPQR Team](http://spqr.diag.uniroma1.it/) to be used within the BHuman framework. This repo is a fork from the official [2016 B-Human code release](https://github.com/bhuman/BHumanCodeRelease).
 
-SPQR Ball Perceptor is distributed under the LGPL 3 license for the parts developed by the [SPQR Team](http://spqr.diag.uniroma1.it/). This license does not apply to the parts of this distribution developed by others where the rights of the copyright owners remain. In particular, see the file "License.txt" for more details about the parts that have not been developed by [SPQR Team](http://spqr.diag.uniroma1.it/).
+SPQR Ball Perceptor is distributed under the LGPL-3.0 license for the parts developed by the [SPQR Team](http://spqr.diag.uniroma1.it/). This license does not apply to the parts of this distribution developed by others where the rights of the copyright owners remain. In particular, see the file "License.txt" for more details about the parts that have not been developed by the [SPQR Team](http://spqr.diag.uniroma1.it/).
 
 ### A Supervised Approach
 
