@@ -12,7 +12,7 @@ SPQR Ball Perceptor is distributed under the LGPL-3.0 license for the parts deve
 The details about the SPQR Ball Perceptor can be found in the technical report:<br>
 Domenico Bloisi, Francesco Del Duchetto, Tiziano Manoni, and Vincenzo Suriani
 "Machine Learning for Realistic Ball Detection in RoboCup SPL"
-arXiv:1707.03628 [PDF](MachineLearningForRealisticBallDetection.pdf) [arXiv](https://arxiv.org/abs/1707.03628v1)
+arXiv:1707.03628 [[PDF](MachineLearningForRealisticBallDetection.pdf)] [[arXiv](https://arxiv.org/abs/1707.03628v1)]
 
 
 ### A Supervised Approach
