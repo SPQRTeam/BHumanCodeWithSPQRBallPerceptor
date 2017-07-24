@@ -23,8 +23,8 @@ RoboCup SPL Use Case"](http://profs.scienze.univr.it/~bloisi/tutorial/balldetect
 
 ### Installation
 
-The SPQR Ball Perceptor has been tested on Ubuntu 16.04 LTS. The following is the installation procedure.
-* The following dependencies are required:
+The SPQR Ball Perceptor has been tested on Ubuntu 16.04 LTS. The installation procedure is as follows.
+1. Install dependencies:
   * cmake
   * libgtk2.0-dev
   * pkg-config
@@ -36,15 +36,15 @@ The SPQR Ball Perceptor has been tested on Ubuntu 16.04 LTS. The following is th
   * lib32z1-dev
   * libjpeg-turbo8-dev
 
-* On Ubuntu 16.04 it is possible to execute:
+* To install the above dependencies on Ubuntu 16.04 use the following command:
 `sudo apt−get install cmake libgtk2.0−dev pkg−config libavcodec−dev libavformat−dev libswscale−dev libjpeg8
 libjpeg-turbo8−dbg lib32z1−dev libjpeg−turbo8−dev`
 
-* Then, it is necessary to install *Opencv 2.4*
+2. Install *Opencv 2.4*
 
-* By following the B-Human code release documentation it is possible to conclude the code installation. 
+3. By following the B-Human code release documentation it is possible to conclude the code installation. 
 
-* To improve the detection and to not discard far away balls it is necessary to calibrate the Nao’s camera matrix and joints.
+IMPORTANT: To improve the detection and to not discard far away balls it is necessary to calibrate the NAO's camera matrix and joints.
 
 
 ### Results
