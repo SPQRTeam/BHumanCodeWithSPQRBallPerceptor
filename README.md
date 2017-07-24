@@ -12,7 +12,7 @@ SPQR Ball Perceptor is distributed under the LGPL-3.0 license for the parts deve
 The details about the SPQR Ball Perceptor can be found in the technical report:<br>
 Domenico Bloisi, Francesco Del Duchetto, Tiziano Manoni, and Vincenzo Suriani
 "Machine Learning for Realistic Ball Detection in RoboCup SPL"
-[PDF](MachineLearningForRealisticBallDetection.pdf)
+arXiv:1707.03628 [PDF](MachineLearningForRealisticBallDetection.pdf) [arXiv](https://arxiv.org/abs/1707.03628v1)
 
 
 ### A Supervised Approach
@@ -36,7 +36,7 @@ The SPQR Ball Perceptor has been tested on Ubuntu 16.04 LTS. The installation pr
   * lib32z1-dev
   * libjpeg-turbo8-dev
 
-* To install the above dependencies on Ubuntu 16.04 use the following command:
+To install the above dependencies on Ubuntu 16.04 use the following command:
 `sudo apt−get install cmake libgtk2.0−dev pkg−config libavcodec−dev libavformat−dev libswscale−dev libjpeg8
 libjpeg-turbo8−dbg lib32z1−dev libjpeg−turbo8−dev`
 
@@ -44,7 +44,7 @@ libjpeg-turbo8−dbg lib32z1−dev libjpeg−turbo8−dev`
 
 3. By following the B-Human code release documentation it is possible to conclude the code installation. 
 
-IMPORTANT: To improve the detection and to not discard far away balls it is necessary to calibrate the NAO's camera matrix and joints.
+__IMPORTANT__: To improve the detection and to not discard far away balls it is necessary to calibrate the NAO's camera matrix and joints.
 
 
 ### Results
