@@ -2,7 +2,8 @@ SPQR Ball Perceptor
 =================
 
 ### DISCLAIMER
-***This code is not the full SPQR Team Release but it is only a part of it released for the RoboCup Community. Please refer to the SPQR Team Description Paper for the details about all the modules contained in the SPQR Team release.
+
+***:warning: This code is not the full SPQR Team Release but it is only a part of it released for the RoboCup Community. Please refer to the SPQR Team Description Paper for the details about all the modules contained in the SPQR Team release.***
 
 ***SPQR Ball Perceptor is provided WITHOUT ANY WARRANTY about its usability. It is for educational purposes and should be regarded as such. Please report bugs at sapienza.spqrteam@gmail.com***
 
